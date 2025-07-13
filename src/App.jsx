@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router'
 import './App.css'
+import LayoutOne from './layout/LayoutOne'
+import Home from './pages/Home'
+import { RouterProvider } from 'react-router'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const MyRoute = createBrowserRouter(createRoutesFromElements(
+
+    <Route>
+      <Route path='/' element={<LayoutOne/>}>
+        <Route index element={<Home/>}></Route>
+      </Route>
+    </Route>
+
+  ))
   return (
     <>
-      <h1 className='mt-10 ml-10'>Hello world</h1>
+      <RouterProvider router={MyRoute}></RouterProvider>
     </>
   )
 }
